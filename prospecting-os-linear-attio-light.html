@@ -1,0 +1,804 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prospecting OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #ffffff;
+      --surface: #f9f9f9;
+      --border: #e5e5e5;
+      --text: #0f172a;
+      --muted: #64748b;
+      --navy: #1f3a5f;
+      --steel: #4f7396;
+      --orange: #c65d1e;
+      --green: #166534;
+      --green-bg: #ecfdf3;
+      --yellow: #92400e;
+      --yellow-bg: #fff8eb;
+      --red: #b45309;
+      --red-bg: #fff3e8;
+      --transition: 200ms cubic-bezier(.2,.8,.2,1);
+      --radius: 18px;
+      --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 30px rgba(15, 23, 42, 0.04);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Geist', Inter, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      border-right: 1px solid var(--border);
+      background: #fff;
+      padding: 24px 18px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--steel));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+    }
+
+    .brand h1 {
+      font-size: 22px;
+      line-height: 1.1;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .brand p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 20px 10px 10px;
+      font-weight: 600;
+    }
+
+    .nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav button {
+      appearance: none;
+      border: 1px solid transparent;
+      background: transparent;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .nav button:hover {
+      background: var(--surface);
+      border-color: var(--border);
+    }
+
+    .nav button.active {
+      background: var(--surface);
+      border-color: var(--border);
+      color: var(--navy);
+    }
+
+    .content {
+      padding: 24px;
+      background:
+        linear-gradient(to bottom, rgba(249,249,249,0.65), rgba(255,255,255,0) 140px),
+        #fff;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .topbar h2 {
+      margin: 0 0 8px;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      font-weight: 700;
+    }
+
+    .topbar p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.5;
+      max-width: 760px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      height: 44px;
+      padding: 0 16px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, var(--steel), var(--navy));
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .search {
+      flex: 1 1 360px;
+      min-width: 280px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 16px;
+      padding: 0 14px;
+      height: 50px;
+    }
+
+    .search input {
+      border: 0;
+      outline: none;
+      width: 100%;
+      font-size: 16px;
+      font-family: inherit;
+      background: transparent;
+      color: var(--text);
+    }
+
+    .filter-chip {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .filter-chip:hover {
+      background: #fff;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat .kicker {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .stat .value {
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .lead-card {
+      grid-column: span 6;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .lead-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(15,23,42,0.08);
+      border-color: #d6d6d6;
+    }
+
+    .lead-summary {
+      padding: 20px;
+      cursor: pointer;
+    }
+
+    .lead-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .company {
+      font-size: 24px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .score {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .score-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--steel);
+    }
+
+    .role {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .signal-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      background: #fff;
+      color: var(--text);
+    }
+
+    .badge.hot {
+      color: var(--orange);
+      border-color: #f1c4a3;
+      background: #fff7f2;
+    }
+
+    .badge.good {
+      color: var(--green);
+      border-color: #cae8d4;
+      background: var(--green-bg);
+    }
+
+    .badge.medium {
+      color: var(--yellow);
+      border-color: #efd8a1;
+      background: var(--yellow-bg);
+    }
+
+    .inline-brief {
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .lead-expand {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height var(--transition), opacity var(--transition), padding var(--transition);
+      border-top: 1px solid transparent;
+      padding: 0 20px;
+      background: #fff;
+    }
+
+    .lead-card.open .lead-expand {
+      max-height: 700px;
+      opacity: 1;
+      padding: 20px;
+      border-top-color: var(--border);
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+      padding: 18px;
+    }
+
+    .panel h4 {
+      margin: 0 0 12px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .kv {
+      display: grid;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .kv div strong {
+      display: block;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .outreach {
+      width: 100%;
+      min-height: 180px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      padding: 14px;
+      font: inherit;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--text);
+      resize: vertical;
+      outline: none;
+    }
+
+    .panel-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mini-item {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .mini-item strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .caret {
+      transition: transform var(--transition);
+    }
+
+    .lead-card.open .caret {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 1160px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .lead-card { grid-column: span 12; }
+      .detail-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .content { padding: 16px; }
+      .topbar h2 { font-size: 28px; }
+      .company { font-size: 22px; }
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1>GLVE Pipeline</h1>
+          <p>Research, qualify, act.</p>
+        </div>
+      </div>
+
+      <div class="nav-label">Views</div>
+      <div class="nav">
+        <button class="active">All prospects</button>
+        <button>High urgency</button>
+        <button>No agency</button>
+        <button>Chicago security</button>
+        <button>Creative / marketing</button>
+      </div>
+
+      <div class="nav-label">Workflow</div>
+      <div class="nav">
+        <button>New</button>
+        <button>Working</button>
+        <button>Contacted</button>
+        <button>Replied</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="topbar">
+        <div>
+          <h2>Prospecting OS</h2>
+          <p>A cleaner, brighter operating surface for your team — built around viable companies, validated signals, and ready-to-send outreach.</p>
+        </div>
+        <div class="actions">
+          <button class="btn">Import leads</button>
+          <button class="btn btn-primary">New search</button>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <label class="search">
+          <span>⌘K</span>
+          <input type="text" placeholder="Search companies, roles, signals..." />
+        </label>
+        <button class="filter-chip">Open &gt; 15 days</button>
+        <button class="filter-chip">50–1000 employees</button>
+        <button class="filter-chip">Direct ATS only</button>
+        <button class="filter-chip">No staffing firms</button>
+      </div>
+
+      <section class="stats">
+        <div class="stat">
+          <div class="kicker">Qualified leads</div>
+          <div class="value">28</div>
+        </div>
+        <div class="stat">
+          <div class="kicker">High urgency</div>
+          <div class="value">11</div>
+        </div>
+        <div class="stat">
+          <div class="kicker">No agency overlap</div>
+          <div class="value">22</div>
+        </div>
+        <div class="stat">
+          <div class="kicker">Ready to contact</div>
+          <div class="value">14</div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="lead-card open">
+          <div class="lead-summary" onclick="toggleCard(this)">
+            <div class="lead-top">
+              <div>
+                <h3 class="company">Keeper Security</h3>
+                <div class="meta">Chicago, IL · 350–500 employees</div>
+              </div>
+              <div class="score"><span class="score-dot"></span> Score 89</div>
+            </div>
+
+            <div class="role">Information Security Engineer</div>
+
+            <div class="signal-row">
+              <span class="badge hot">Hot · 27 days open</span>
+              <span class="badge good">No agency detected</span>
+              <span class="badge medium">Product launch · Apr 2026</span>
+            </div>
+
+            <div class="inline-brief">
+              Internal security hiring appears to be trailing product expansion, which usually means a real execution gap instead of casual hiring.
+            </div>
+          </div>
+
+          <div class="lead-expand">
+            <div class="detail-grid">
+              <div class="panel">
+                <h4>Auto brief</h4>
+                <div class="kv">
+                  <div><strong>Why this matters</strong>Security companies adding new capabilities often create pressure on internal engineering and governance teams at the same time.</div>
+                  <div><strong>Likely pain</strong>The team needs security coverage now, but hiring is taking longer than expected.</div>
+                  <div><strong>Who to contact</strong>VP Security, Director of Security Engineering, CISO</div>
+                  <div><strong>ATS link</strong><a href="#" style="color: var(--navy); text-decoration: none;">View direct role</a></div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <h4>Outreach draft</h4>
+                <textarea class="outreach">Hi [Name] —
+
+Saw you're hiring for an Information Security Engineer.
+
+Usually when a role like that has been open this long, it means the team is under pressure to expand coverage without enough bandwidth internally.
+
+I'm Marcos Cuellar — I work with sales leaders to solve hiring gaps when teams are stretched.
+
+Are you open to outside support right now or keeping this fully in-house?</textarea>
+                <div class="panel-actions">
+                  <button class="btn btn-primary">Copy message</button>
+                  <button class="btn">Assign owner</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="lead-card">
+          <div class="lead-summary" onclick="toggleCard(this)">
+            <div class="lead-top">
+              <div>
+                <h3 class="company">ActiveCampaign</h3>
+                <div class="meta">Chicago, IL · 850 employees</div>
+              </div>
+              <div class="score"><span class="score-dot"></span> Score 76</div>
+            </div>
+
+            <div class="role">Senior Detection Engineer</div>
+
+            <div class="signal-row">
+              <span class="badge hot">Hot · 32 days open</span>
+              <span class="badge good">Direct ATS verified</span>
+              <span class="badge medium">Acquisition + AI expansion</span>
+            </div>
+
+            <div class="inline-brief">
+              Detection hiring plus AI expansion suggests security operations are trying to keep pace with a fast-moving product surface.
+            </div>
+
+            <div style="display:flex;justify-content:flex-end;margin-top:14px;color:var(--muted);font-size:14px;font-weight:600;">
+              Expand <span class="caret" style="margin-left:8px;">▾</span>
+            </div>
+          </div>
+
+          <div class="lead-expand">
+            <div class="detail-grid">
+              <div class="panel">
+                <h4>Validation summary</h4>
+                <div class="mini-list">
+                  <div class="mini-item"><strong>ATS verified</strong>Direct company posting confirmed.</div>
+                  <div class="mini-item"><strong>Agency check</strong>No staffing firm duplication surfaced in current scan.</div>
+                  <div class="mini-item"><strong>Buying signal</strong>Recent AI capability expansion and acquisition activity.</div>
+                </div>
+              </div>
+              <div class="panel">
+                <h4>Suggested message</h4>
+                <textarea class="outreach">Hi [Name] —
+
+Noticed you're hiring for a Senior Detection Engineer.
+
+With your recent AI expansion, I’d imagine the security team is feeling pressure to expand detection coverage without slowing product momentum.
+
+I'm Marcos Cuellar — I work with sales leaders to solve hiring gaps when teams are stretched.
+
+Open to outside support right now, or is the plan to keep this fully in-house?</textarea>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="lead-card">
+          <div class="lead-summary" onclick="toggleCard(this)">
+            <div class="lead-top">
+              <div>
+                <h3 class="company">Kin Insurance</h3>
+                <div class="meta">Chicago, IL · 750 employees</div>
+              </div>
+              <div class="score"><span class="score-dot"></span> Score 81</div>
+            </div>
+
+            <div class="role">Senior GRC Engineer</div>
+
+            <div class="signal-row">
+              <span class="badge hot">Hot · 21 days open</span>
+              <span class="badge medium">Revenue growth + new product</span>
+              <span class="badge good">Sweet-spot company size</span>
+            </div>
+
+            <div class="inline-brief">
+              Expansion into new lines usually drives compliance and controls work faster than internal hiring can catch up.
+            </div>
+
+            <div style="display:flex;justify-content:flex-end;margin-top:14px;color:var(--muted);font-size:14px;font-weight:600;">
+              Expand <span class="caret" style="margin-left:8px;">▾</span>
+            </div>
+          </div>
+
+          <div class="lead-expand">
+            <div class="detail-grid">
+              <div class="panel">
+                <h4>Prospecting insight</h4>
+                <div class="kv">
+                  <div><strong>Likely pain</strong>Audit, governance, and policy work is increasing as the business expands.</div>
+                  <div><strong>Urgency</strong>High</div>
+                  <div><strong>Best contacts</strong>Head of GRC, CISO, Compliance Director</div>
+                </div>
+              </div>
+              <div class="panel">
+                <h4>Tasks</h4>
+                <div class="mini-list">
+                  <div class="mini-item"><strong>1</strong>Pull direct ATS link into CRM record.</div>
+                  <div class="mini-item"><strong>2</strong>Source Head of GRC and CISO on LinkedIn.</div>
+                  <div class="mini-item"><strong>3</strong>Send first outreach with product-expansion angle.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="lead-card">
+          <div class="lead-summary" onclick="toggleCard(this)">
+            <div class="lead-top">
+              <div>
+                <h3 class="company">Runpod</h3>
+                <div class="meta">Remote / Chicago market · 80–200 employees</div>
+              </div>
+              <div class="score"><span class="score-dot"></span> Score 84</div>
+            </div>
+
+            <div class="role">Security Engineer</div>
+
+            <div class="signal-row">
+              <span class="badge hot">Hot · 23 days open</span>
+              <span class="badge medium">$120M ARR signal</span>
+              <span class="badge good">No agency overlap</span>
+            </div>
+
+            <div class="inline-brief">
+              Fast ARR growth with a smaller team usually means hiring urgency is real, especially around infrastructure and security.
+            </div>
+
+            <div style="display:flex;justify-content:flex-end;margin-top:14px;color:var(--muted);font-size:14px;font-weight:600;">
+              Expand <span class="caret" style="margin-left:8px;">▾</span>
+            </div>
+          </div>
+
+          <div class="lead-expand">
+            <div class="detail-grid">
+              <div class="panel">
+                <h4>Activity</h4>
+                <div class="mini-list">
+                  <div class="mini-item"><strong>Owner</strong>Unassigned</div>
+                  <div class="mini-item"><strong>Status</strong>Ready to contact</div>
+                  <div class="mini-item"><strong>Next move</strong>Lead with growth-pressure angle.</div>
+                </div>
+              </div>
+              <div class="panel">
+                <h4>Outreach draft</h4>
+                <textarea class="outreach">Hi [Name] —
+
+Saw you're hiring for a Security Engineer.
+
+At your current growth pace, teams usually feel pressure to keep security coverage aligned with roadmap speed, and that hiring gap can get painful fast.
+
+I'm Marcos Cuellar — I work with sales leaders to solve hiring gaps when teams are stretched.
+
+Would it make sense to compare notes on outside support, or are you keeping this fully internal?</textarea>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function toggleCard(el) {
+      const card = el.closest('.lead-card');
+      const isOpen = card.classList.contains('open');
+      document.querySelectorAll('.lead-card.open').forEach(c => c.classList.remove('open'));
+      if (!isOpen) card.classList.add('open');
+    }
+  </script>
+</body>
+</html>
