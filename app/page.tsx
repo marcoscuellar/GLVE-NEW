@@ -1,5 +1,6 @@
 import { EngineCard } from "@/components/engine-card";
 import { EngineWalkthrough } from "@/components/engine-walkthrough";
+import { PresentationCover } from "@/components/presentation-cover";
 import { WarRoomDashboard } from "@/components/war-room";
 import { ENGINES } from "@/lib/engines";
 
@@ -10,6 +11,9 @@ export default function Page() {
 
   return (
     <main>
+      {/* PRESENTATION COVER */}
+      <PresentationCover />
+
       {/* HERO */}
       <header className="mx-auto max-w-[1480px] px-14 pb-20 pt-32">
         <div className="mb-14 inline-flex items-center gap-3.5 font-mono text-[13px] font-medium uppercase tracking-[0.08em] text-ink-2 before:h-px before:w-9 before:bg-ink-2 before:content-['']">
