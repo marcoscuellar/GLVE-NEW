@@ -2016,8 +2016,8 @@ body {
   font-weight: 500;
 }
 .cover-credit-name {
-  color: var(--ink);
-  font-weight: 600;
+  color: var(--amber-dd);
+  font-weight: 700;
   letter-spacing: 0.04em;
 }
 .cover-credit-sep {
