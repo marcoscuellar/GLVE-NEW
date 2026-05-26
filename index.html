@@ -38,120 +38,59 @@
 </template>
 
 <!-- ============================================================
-     PRESENTATION COVER — Baum / Reynolds briefing
+     STAGE HEADER — sets the stage in 4 sections up front
      ============================================================ -->
-<section class="cover" data-screen-label="00 Cover">
-  <div class="cover-top">
-    <div class="cover-logo">
-      <span class="cover-logo-mark">
-        <svg viewBox="0 0 100 100" width="20" height="20"><rect x="10" y="34" width="80" height="32" rx="5" fill="#fff"/><circle cx="70" cy="50" r="14" fill="#0a0a0a"/><circle cx="70" cy="50" r="7" fill="#fff"/></svg>
-      </span>
-      <span class="cover-word">GLVE</span>
+<header class="stage-header" data-screen-label="00 Stage">
+  <div class="sh-grid">
+    <!-- 1 · GLVE -->
+    <div class="sh-col sh-brand">
+      <div class="sh-eyebrow">— GLVE</div>
+      <div class="sh-logo">
+        <span class="sh-mark">
+          <svg viewBox="0 0 100 100" width="22" height="22"><rect x="10" y="34" width="80" height="32" rx="5" fill="#fff"/><circle cx="70" cy="50" r="14" fill="#0a0a0a"/><circle cx="70" cy="50" r="7" fill="#fff"/></svg>
+        </span>
+        <span class="sh-wordmark">GLVE</span>
+      </div>
+      <div class="sh-sub">Composable Agentic Architecture</div>
+      <div class="sh-foot">
+        <span class="sh-pulse"></span>
+        Live walkthrough · 2026
+      </div>
     </div>
-    <div class="cover-meta"><span class="cover-pulse"></span>Live walkthrough · 2026</div>
-  </div>
 
-  <div class="cover-center">
-    <div class="cover-credit">
-      <span class="cover-credit-lbl">Prepared for</span>
-      <span class="cover-credit-name">Laura Baum &amp; Patrick Reynolds</span>
-      <span class="cover-credit-sep">·</span>
-      <span class="cover-credit-lbl">By</span>
-      <span class="cover-credit-name">Marcos Cuellar</span>
+    <!-- 2 · Audience (roleplay context) -->
+    <div class="sh-col">
+      <div class="sh-eyebrow">— Prepared for</div>
+      <div class="sh-name">Laura Baum</div>
+      <div class="sh-name">Patrick Reynolds</div>
+      <div class="sh-sub">Operators &middot; Elite Global Staffing</div>
+      <div class="sh-foot sh-mono-foot">40 AEs &middot; 5 verticals &middot; Bullhorn ATS</div>
     </div>
-    <h1 class="cover-h">A composable<span class="light">agentic architecture.</span></h1>
-    <p class="cover-lede">
-      Forty AEs. <strong>70% of the week burned on analyst work.</strong>
-      GLVE is the architecture that flips it &mdash; six specialized engines doing the research week,
-      so your reps get the selling week back.
-    </p>
-  </div>
 
-  <div class="cover-foot">
-    <span class="cover-hint">Scroll to enter the system <span class="cover-arrow">↓</span></span>
-    <span>GLVE · v1.0 · White Glove Data Delivery</span>
-  </div>
-</section>
-
-<!-- ============================================================
-     TOP BAR
-     ============================================================ -->
-<nav class="topbar">
-  <div class="logo">
-    <div class="logo-mark">
-      <svg viewBox="0 0 100 100" width="16" height="16"><rect x="10" y="34" width="80" height="32" rx="5" fill="#fff"/><circle cx="70" cy="50" r="14" fill="#0a0a0a"/><circle cx="70" cy="50" r="7" fill="#fff"/></svg>
+    <!-- 3 · Thesis (the lede) -->
+    <div class="sh-col sh-thesis">
+      <div class="sh-eyebrow">— The thesis</div>
+      <div class="sh-stat"><span class="sh-stat-v">70<span class="sh-stat-u">%</span></span><span class="sh-stat-k">of the week<br/>on analyst work</span></div>
+      <p class="sh-lede">
+        GLVE is the architecture that flips it &mdash; six specialized engines doing the research week,
+        so your reps get the selling week back.
+      </p>
+      <div class="sh-foot">— Salesforce, State of Sales 2025</div>
     </div>
-    GLVE
+
+    <!-- 4 · Author -->
+    <div class="sh-col sh-author">
+      <div class="sh-eyebrow">— By</div>
+      <div class="sh-name">Marcos Cuellar</div>
+      <div class="sh-sub">White Glove Data Delivery</div>
+      <div class="sh-foot sh-mono-foot">GLVE &middot; v1.0 &middot; 2026</div>
+      <a class="sh-cue" href="#arch">Scroll to enter the system <span class="sh-arrow">↓</span></a>
+    </div>
   </div>
-  <div class="nav-meta">
-    <span>Composable Agentic Architecture</span>
-    <span>Operational Walkthrough</span>
-    <span><span class="dot"></span>Live</span>
-  </div>
-</nav>
+</header>
 <div class="progress"></div>
 
-<!-- ============================================================
-     01 — OPERATIONAL ROLEPLAY (replaces the standalone Problem section)
-     A conversational diagnostic. The stats land as recognition moments.
-     ============================================================ -->
-<section class="section roleplay" data-screen-label="02 Operational Roleplay">
-  <div class="eyebrow-mono">01 · Operational roleplay</div>
-  <h2 class="roleplay-h">
-    Let's say you run
-    <span class="light">Elite Global Staffing.</span>
-  </h2>
-  <p class="roleplay-sub">
-    Forty AEs. Five verticals. Bullhorn as the system of record. The brand is strong. Pipeline is not the problem. The problem is what your reps do all week to <em>build</em> pipeline.
-  </p>
-
-  <div class="diag">
-    <div class="diag-aside">
-      <div class="diag-lbl">[ Operational diagnostic · floor reading ]</div>
-      <div class="diag-time">08:14 EST · Monday</div>
-    </div>
-
-    <ol class="diag-list">
-      <li class="diag-item">
-        <div class="diag-n">01</div>
-        <div class="diag-body">
-          <div class="diag-h">Your reps open the week with fragmented signals.</div>
-          <div class="diag-d">ATS exports, news scans, LinkedIn checks, internal CRM notes. Nothing is cross-validated. Confidence is anecdotal.</div>
-        </div>
-      </li>
-      <li class="diag-item flag">
-        <div class="diag-n">02</div>
-        <div class="diag-body">
-          <div class="diag-h">They spend <strong>70% of the week on non-selling work</strong>.</div>
-          <div class="diag-d">Reading job posts, scanning org charts, internal meetings, admin, manual data entry. The research <em>is</em> the job, even though the job description says &ldquo;sell.&rdquo; <span class="diag-cite">Salesforce, State of Sales 2025.</span></div>
-        </div>
-        <div class="diag-stat"><span class="v">70%</span><span class="k">non-selling</span></div>
-      </li>
-      <li class="diag-item flag">
-        <div class="diag-n">03</div>
-        <div class="diag-body">
-          <div class="diag-h">Only <strong>30%</strong> of the week is real selling time.</div>
-          <div class="diag-d">What you hired the rep to do is less than a third of what they do. The rest is unpaid analyst work &mdash; and it isn&rsquo;t optional. <span class="diag-cite">Salesforce, State of Sales 2025.</span></div>
-        </div>
-        <div class="diag-stat"><span class="v">30%</span><span class="k">selling</span></div>
-      </li>
-      <li class="diag-item">
-        <div class="diag-n">04</div>
-        <div class="diag-body">
-          <div class="diag-h">Generic AI assistants compound the problem.</div>
-          <div class="diag-d">One model, every task, blurred reasoning. Reps lose trust the moment a hallucinated signal lands in a CRM.</div>
-        </div>
-      </li>
-      <li class="diag-item">
-        <div class="diag-n">05</div>
-        <div class="diag-body">
-          <div class="diag-h">Reps act on weak confidence. The market hears it.</div>
-          <div class="diag-d">When the operator isn't sure, the outreach isn't sure. The reply rate proves it. The pipeline proves it.</div>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
+<a id="arch"></a>
 
 <!-- ============================================================
      03 — THE ARCHITECTURE
