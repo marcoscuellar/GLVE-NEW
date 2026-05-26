@@ -1,1 +1,0 @@
-export { PresentationCover } from "./PresentationCover";

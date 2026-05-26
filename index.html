@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GLVE — Operational Walkthrough</title>
+<meta name="description" content="GLVE — a Composable Agentic Architecture for staffing operations." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="walkthrough/styles.css">
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#ffffff">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#ffffff"/>
+    <!-- 6 engine chips in a row, last one lit -->
+    <g transform="translate(120 320)">
+      <rect x="0"   y="0" width="140" height="80" rx="14" fill="#ffffff" stroke="#e7e5e4" stroke-width="2"/>
+      <rect x="160" y="0" width="140" height="80" rx="14" fill="#ffffff" stroke="#e7e5e4" stroke-width="2"/>
+      <rect x="320" y="0" width="140" height="80" rx="14" fill="#ffffff" stroke="#e7e5e4" stroke-width="2"/>
+      <rect x="480" y="0" width="140" height="80" rx="14" fill="#ffffff" stroke="#0a0a0a" stroke-width="3"/>
+      <rect x="640" y="0" width="140" height="80" rx="14" fill="#ffffff" stroke="#e7e5e4" stroke-width="2"/>
+      <rect x="800" y="0" width="140" height="80" rx="14" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/>
+      <!-- thin arrows between -->
+      <g stroke="#a3a3a3" stroke-width="2" fill="none">
+        <line x1="140" y1="40" x2="156" y2="40"/>
+        <line x1="300" y1="40" x2="316" y2="40"/>
+        <line x1="460" y1="40" x2="476" y2="40"/>
+        <line x1="620" y1="40" x2="636" y2="40"/>
+        <line x1="780" y1="40" x2="796" y2="40"/>
+      </g>
+    </g>
+    <text x="600" y="220" text-anchor="middle" fill="#0a0a0a" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="800" font-size="76" letter-spacing="-3">A composable</text>
+    <text x="600" y="280" text-anchor="middle" fill="#a3a3a3" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="400" font-size="56" letter-spacing="-2">agentic architecture.</text>
+    <text x="600" y="540" text-anchor="middle" fill="#525252" font-family="ui-monospace, monospace" font-weight="500" font-size="18" letter-spacing="4">GLVE · OPERATIONAL WALKTHROUGH · 2026</text>
+  </svg>
+</template>
+
+<!-- ============================================================
+     PRESENTATION COVER — Baum / Reynolds briefing
+     ============================================================ -->
+<section class="cover" data-screen-label="00 Cover">
+  <div class="cover-top">
+    <div class="cover-logo">
+      <span class="cover-logo-mark">
+        <svg viewBox="0 0 100 100" width="20" height="20"><rect x="10" y="34" width="80" height="32" rx="5" fill="#fff"/><circle cx="70" cy="50" r="14" fill="#0a0a0a"/><circle cx="70" cy="50" r="7" fill="#fff"/></svg>
+      </span>
+      <span class="cover-word">GLVE</span>
+    </div>
+    <div class="cover-meta"><span class="cover-pulse"></span>Live walkthrough · 2026</div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-left">
+      <div class="cover-eyebrow">— Operational Walkthrough · Private Briefing</div>
+      <h1 class="cover-h">A composable<span class="light">agentic architecture.</span></h1>
+    </div>
+    <div class="cover-right">
+      <div class="cover-block">
+        <div class="cover-lbl">Prepared for</div>
+        <div class="cover-names">
+          <div>Laura Baum</div>
+          <div>Patrick Reynolds</div>
+        </div>
+      </div>
+      <div class="cover-block">
+        <div class="cover-lbl">By</div>
+        <div class="cover-author">Marcos Cuellar</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-foot">
+    <span class="cover-hint">Scroll to enter the system <span class="cover-arrow">↓</span></span>
+    <span>GLVE · v1.0 · White Glove Data Delivery</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     TOP BAR
+     ============================================================ -->
+<nav class="topbar">
+  <div class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 100 100" width="16" height="16"><rect x="10" y="34" width="80" height="32" rx="5" fill="#fff"/><circle cx="70" cy="50" r="14" fill="#0a0a0a"/><circle cx="70" cy="50" r="7" fill="#fff"/></svg>
+    </div>
+    GLVE
+  </div>
+  <div class="nav-meta">
+    <span>Composable Agentic Architecture</span>
+    <span>Operational Walkthrough</span>
+    <span><span class="dot"></span>Live</span>
+  </div>
+</nav>
+<div class="progress"></div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero" data-screen-label="01 Hero">
+  <div class="eyebrow">— Operational Walkthrough · 2026</div>
+  <h1>
+    A composable
+    <span class="light">agentic architecture.</span>
+  </h1>
+  <p class="sub">
+    Six specialized intelligence engines. Defined mandates. Verified handoffs. Built so an operator experiences calm — and the infrastructure handles the complexity underneath.
+  </p>
+  <div class="hero-foot">
+    <span class="hint">Scroll to enter the system <span class="scroll-arrow">↓</span></span>
+    <span>GLVE · v1.0 · 2026</span>
+  </div>
+</header>
+
+<!-- ============================================================
+     01 — OPERATIONAL ROLEPLAY (replaces the standalone Problem section)
+     A conversational diagnostic. The stats land as recognition moments.
+     ============================================================ -->
+<section class="section roleplay" data-screen-label="02 Operational Roleplay">
+  <div class="eyebrow-mono">01 · Operational roleplay</div>
+  <h2 class="roleplay-h">
+    Let's say you run
+    <span class="light">Elite Global Staffing.</span>
+  </h2>
+  <p class="roleplay-sub">
+    Forty AEs. Five verticals. Bullhorn as the system of record. The brand is strong. Pipeline is not the problem. The problem is what your reps do all week to <em>build</em> pipeline.
+  </p>
+
+  <div class="diag">
+    <div class="diag-aside">
+      <div class="diag-lbl">[ Operational diagnostic · floor reading ]</div>
+      <div class="diag-time">08:14 EST · Monday</div>
+    </div>
+
+    <ol class="diag-list">
+      <li class="diag-item">
+        <div class="diag-n">01</div>
+        <div class="diag-body">
+          <div class="diag-h">Your reps open the week with fragmented signals.</div>
+          <div class="diag-d">ATS exports, news scans, LinkedIn checks, internal CRM notes. Nothing is cross-validated. Confidence is anecdotal.</div>
+        </div>
+      </li>
+      <li class="diag-item flag">
+        <div class="diag-n">02</div>
+        <div class="diag-body">
+          <div class="diag-h">They spend <strong>89% of the week researching and planning outreach</strong>.</div>
+          <div class="diag-d">Reading job posts, scanning org charts, assembling context. The research <em>is</em> the job, even though the job description says "sell."</div>
+        </div>
+        <div class="diag-stat"><span class="v">89%</span><span class="k">research</span></div>
+      </li>
+      <li class="diag-item flag">
+        <div class="diag-n">03</div>
+        <div class="diag-body">
+          <div class="diag-h">Less than <strong>30%</strong> of the week is real revenue conversation.</div>
+          <div class="diag-d">What you hired the rep to do is a fraction of what they do. The rest is unpaid analyst work — and it isn't optional.</div>
+        </div>
+        <div class="diag-stat"><span class="v">&lt;30%</span><span class="k">selling</span></div>
+      </li>
+      <li class="diag-item">
+        <div class="diag-n">04</div>
+        <div class="diag-body">
+          <div class="diag-h">Generic AI assistants compound the problem.</div>
+          <div class="diag-d">One model, every task, blurred reasoning. Reps lose trust the moment a hallucinated signal lands in a CRM.</div>
+        </div>
+      </li>
+      <li class="diag-item">
+        <div class="diag-n">05</div>
+        <div class="diag-body">
+          <div class="diag-h">Reps act on weak confidence. The market hears it.</div>
+          <div class="diag-d">When the operator isn't sure, the outreach isn't sure. The reply rate proves it. The pipeline proves it.</div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================
+     03 — THE ARCHITECTURE
+     ============================================================ -->
+<section class="section solution" data-screen-label="04 Architecture">
+  <div class="eyebrow-mono">03 · The architecture</div>
+  <h2>
+    GLVE is a Composable Agentic Architecture.
+    <span class="light">Six specialized engines. Defined responsibilities. Verified handoffs.</span>
+  </h2>
+  <p class="sub">
+    Instead of one massive generalized model attempting every task, GLVE separates operational responsibilities into modular intelligence engines. Each has a distinct mandate, reasoning boundaries, and verification ownership. The system orchestrates them through structured, zero-knowledge handoffs.
+  </p>
+
+  <div class="engine-grid">
+    <article class="engine-card-mini">
+      <div class="ec-top"><div class="ec-num">01</div><div class="ec-tag">Validation</div></div>
+      <div class="ec-title">Role Validation</div>
+      <div class="ec-desc">Confirms hiring activity is real before outreach begins. Cross-validates ATS, ecosystems, hiring signals.</div>
+    </article>
+    <article class="engine-card-mini amber">
+      <div class="ec-top"><div class="ec-num">02</div><div class="ec-tag">Multi-Vertical</div></div>
+      <div class="ec-title">Buying Signals</div>
+      <div class="ec-desc">Detects accounts showing intent right now. Scores recency, density, and signal correlation.</div>
+    </article>
+    <article class="engine-card-mini">
+      <div class="ec-top"><div class="ec-num">03</div><div class="ec-tag">Intelligence</div></div>
+      <div class="ec-title">Stakeholder Mapping</div>
+      <div class="ec-desc">Identifies the right humans inside qualified accounts — visible decision-makers and quiet authority paths.</div>
+    </article>
+    <article class="engine-card-mini">
+      <div class="ec-top"><div class="ec-num">04</div><div class="ec-tag">Synthesis</div></div>
+      <div class="ec-title">Outreach Architecture</div>
+      <div class="ec-desc">Constructs the right message for the right person at the right moment. Context-anchored, not templated.</div>
+    </article>
+    <article class="engine-card-mini">
+      <div class="ec-top"><div class="ec-num">05</div><div class="ec-tag">Orchestration</div></div>
+      <div class="ec-title">Timing · Orchestration</div>
+      <div class="ec-desc">Sequences outreach within signal windows. Coordinates channels, cadence, response state.</div>
+    </article>
+    <article class="engine-card-mini navy">
+      <div class="ec-top"><div class="ec-num">06</div><div class="ec-tag">Delivery</div></div>
+      <div class="ec-title">Audit &amp; Delivery</div>
+      <div class="ec-desc">Wraps everything in a strategic audit and delivers verified opportunity packages back to Bullhorn / CRM.</div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     THE WALKTHROUGH — sticky scroll engine
+     ============================================================ -->
+<div class="walkthrough" data-screen-label="05 Walkthrough">
+  <div class="walkthrough-inner">
+
+    <!-- LEFT: sticky operational canvas (populated by app.js) -->
+    <aside class="canvas-col">
+      <div class="canvas">
+        <div class="canvas-rail"><!-- chips injected by app.js --></div>
+        <div class="stage">
+          <div class="stage-head">
+            <div class="stage-eng">
+              <span class="badge">01</span>
+              <span class="name">Role Validation</span>
+            </div>
+            <div class="stage-state"><!-- state pills injected --></div>
+          </div>
+          <div class="stage-body"><!-- layers injected --></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT: scrolling narrative (populated by app.js) -->
+    <div class="narrative-col"><!-- engine blocks injected --></div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     05 — OPERATIONAL VISIBILITY
+     Workflow intelligence, not analytics. Where the architecture
+     enforces operational consistency.
+     ============================================================ -->
+<section class="section visibility" data-screen-label="06 Operational Visibility">
+  <div class="eyebrow-mono">05 · Operational visibility</div>
+  <h2 class="vis-h">
+    Not analytics.
+    <span class="light">Workflow intelligence.</span>
+  </h2>
+  <p class="vis-sub">
+    Because every engine produces a strategic audit and a verified handoff, the architecture itself becomes legible. Bottlenecks surface. Signal quality is measurable. Coaching becomes specific. The system enforces operational consistency by design.
+  </p>
+
+  <div class="vis-spotlight">
+
+    <!-- ==========================================================
+         HERO CARD — Workflow Bottleneck
+         The single most critical insight. Massive headline metric.
+         ========================================================== -->
+    <article class="vis-hero">
+      <header class="vh-head">
+        <div class="vh-tag">
+          <span class="vh-pulse"></span>
+          <span>[ Workflow bottleneck · step latency ]</span>
+        </div>
+        <div class="vh-meta">
+          <span class="vh-flag">CRITICAL</span>
+          <span>p95 · today · 14:07 EST</span>
+        </div>
+      </header>
+
+      <div class="vh-spotlight">
+        <div class="vh-num-wrap">
+          <div class="vh-num">13<span class="vh-unit">s</span></div>
+          <div class="vh-delta">+ 8s over pipeline median</div>
+        </div>
+        <div class="vh-caption">
+          <div class="vh-cap-lbl">03 · Stakeholder Map</div>
+          <div class="vh-cap-h">Reps stall here.</div>
+          <div class="vh-cap-d">Step latency is the diagnostic signal — and the coaching target. Every engine downstream of 03 inherits this delay.</div>
+        </div>
+      </div>
+
+      <div class="vh-chart">
+        <div class="vh-chart-head">
+          <span>Step latency · all engines · p95</span>
+          <span>end-to-end 36s</span>
+        </div>
+        <div class="vh-lat-row"><span class="lat-k">01 Role Validation</span><span class="lat-bar"><i style="width: 22%"></i></span><span class="lat-v">4s</span></div>
+        <div class="vh-lat-row"><span class="lat-k">02 Buying Signals</span><span class="lat-bar"><i style="width: 38%"></i></span><span class="lat-v">7s</span></div>
+        <div class="vh-lat-row critical"><span class="lat-k">03 Stakeholder Map</span><span class="lat-bar"><i style="width: 100%"></i></span><span class="lat-v">13s</span></div>
+        <div class="vh-lat-row"><span class="lat-k">04 Outreach Arch.</span><span class="lat-bar"><i style="width: 31%"></i></span><span class="lat-v">6s</span></div>
+        <div class="vh-lat-row"><span class="lat-k">05 Timing · Orch.</span><span class="lat-bar"><i style="width: 16%"></i></span><span class="lat-v">3s</span></div>
+        <div class="vh-lat-row"><span class="lat-k">06 Audit &amp; Delivery</span><span class="lat-bar"><i style="width: 19%"></i></span><span class="lat-v">3s</span></div>
+      </div>
+
+      <a class="vh-cta" href="#" role="button">
+        <span class="vh-cta-lbl">[ COACHING SURFACE ]</span>
+        <span class="vh-cta-h">Open 03 · Stakeholder Map</span>
+        <span class="vh-cta-arrow" aria-hidden="true">→</span>
+      </a>
+    </article>
+
+    <!-- ==========================================================
+         SECONDARY COLUMN — 3 supporting cards
+         ========================================================== -->
+    <div class="vis-side">
+
+      <!-- Where reps get stuck -->
+      <article class="vis-mini vis-stuck">
+        <header>
+          <div class="vc-lbl">[ Where reps get stuck ]</div>
+          <div class="vc-meta">Handoff · 7d</div>
+        </header>
+        <div class="vm-stat">
+          <div class="vm-num">31<span class="vm-unit">%</span></div>
+          <div class="vm-cap">stall at <strong>03&nbsp;→&nbsp;04</strong><br/>handoff timeout</div>
+        </div>
+        <div class="vm-rows">
+          <div class="vc-row"><span class="vc-k">01 → 02</span><div class="vc-bar"><i style="width: 8%"></i></div><span class="vc-v">8%</span></div>
+          <div class="vc-row"><span class="vc-k">02 → 03</span><div class="vc-bar"><i style="width: 14%"></i></div><span class="vc-v">14%</span></div>
+          <div class="vc-row critical"><span class="vc-k">03 → 04</span><div class="vc-bar"><i style="width: 31%"></i></div><span class="vc-v">31%</span></div>
+          <div class="vc-row"><span class="vc-k">04 → 05</span><div class="vc-bar"><i style="width: 11%"></i></div><span class="vc-v">11%</span></div>
+          <div class="vc-row"><span class="vc-k">05 → 06</span><div class="vc-bar"><i style="width: 6%"></i></div><span class="vc-v">6%</span></div>
+        </div>
+      </article>
+
+      <!-- Signal quality -->
+      <article class="vis-mini vis-signal">
+        <header>
+          <div class="vc-lbl">[ Signal quality ]</div>
+          <div class="vc-meta">Verified · 30d</div>
+        </header>
+        <div class="vm-stat">
+          <div class="vm-num vm-num-ok">94<span class="vm-unit">%</span></div>
+          <div class="vm-cap">weighted source<br/>confidence</div>
+        </div>
+        <div class="vm-rows">
+          <div class="vc-row"><span class="vc-k">Greenhouse</span><span class="vc-conf"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="vc-v">98%</span></div>
+          <div class="vc-row"><span class="vc-k">Workday</span><span class="vc-conf"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="vc-v">94%</span></div>
+          <div class="vc-row"><span class="vc-k">Lever</span><span class="vc-conf"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="vc-v">76%</span></div>
+          <div class="vc-row dim"><span class="vc-k">Indeed</span><span class="vc-conf"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="vc-v">42%</span></div>
+        </div>
+      </article>
+
+      <!-- Coaching surface -->
+      <article class="vis-mini vis-coach">
+        <header>
+          <div class="vc-lbl">[ Coaching surface · by rep ]</div>
+          <div class="vc-meta">Audit · 7d</div>
+        </header>
+        <div class="vm-stat">
+          <div class="vm-num vm-num-warn">1<span class="vm-unit">/5</span></div>
+          <div class="vm-cap">rep flagged<br/>at 03 handoff</div>
+        </div>
+        <div class="vm-rows coach-compact">
+          <div class="coach-row"><span class="coach-rep">Rep A</span><span class="coach-mode">04 only</span><span class="coach-eng"><b>04</b></span></div>
+          <div class="coach-row"><span class="coach-rep">Rep B</span><span class="coach-mode">04 + 02</span><span class="coach-eng"><b>04</b><b>02</b></span></div>
+          <div class="coach-row critical"><span class="coach-rep">Rep C</span><span class="coach-mode">stuck at 03</span><span class="coach-eng"><b>01</b><b>02</b><b>03</b></span></div>
+          <div class="coach-row"><span class="coach-rep">Rep D</span><span class="coach-mode">full loop · clean</span><span class="coach-eng"><b>01</b><b>02</b><b>03</b><b>04</b><b>05</b><b>06</b></span></div>
+          <div class="coach-row"><span class="coach-rep">Rep E</span><span class="coach-mode">full loop · clean</span><span class="coach-eng"><b>01</b><b>02</b><b>03</b><b>04</b><b>05</b><b>06</b></span></div>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+
+  <div class="vis-quote">
+    The architecture <strong>is</strong> the observability. Every reasoning step, every handoff, every variable — logged, sourced, replayable.
+  </div>
+</section>
+
+<!-- ============================================================
+     OUTRO
+     ============================================================ -->
+<section class="outro" data-screen-label="07 Outro">
+  <div class="outro-inner">
+    <div class="eyebrow-mono">— The takeaway</div>
+    <h2>
+      Calm for the operator.
+      <span class="light">Complexity underneath.</span>
+    </h2>
+    <p class="lede">
+      GLVE performs intelligence gathering, validation, verification, orchestration and synthesis — quietly, in the background. The operator never experiences the infrastructure burden. They receive a calm, friction-free workflow and a verified opportunity package, ready for action inside Bullhorn.
+    </p>
+
+    <div class="flow-row">
+      <span class="flow-pill"><span class="num">01</span> Role Validation</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill"><span class="num">02</span> Buying Signals</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill"><span class="num">03</span> Stakeholder Mapping</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill"><span class="num">04</span> Outreach Architecture</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill"><span class="num">05</span> Timing · Orchestration</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill"><span class="num">06</span> Audit &amp; Delivery</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill" style="background: rgba(74,222,128,0.10); border-color: rgba(74,222,128,0.30); color: #4ade80;"><span class="num" style="color: rgba(74,222,128,0.6);">→</span> Operator · Bullhorn</span>
+    </div>
+
+    <div class="outro-footer">
+      <span>[ GLVE · Composable Agentic Architecture · v1.0 ]</span>
+      <span>White Glove Data Delivery · 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Tweaks panel (populated by app.js when activated)
+     ============================================================ -->
+<div class="tweaks-panel" aria-hidden="true"></div>
+
+<!-- ============================================================
+     Scripts
+     ============================================================ -->
+<script src="walkthrough/data.js"></script>
+<script src="walkthrough/app.js"></script>
+</body>
+</html>
