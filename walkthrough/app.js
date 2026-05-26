@@ -786,3 +786,75 @@
     setupTweaks();
   });
 })();
+
+/* ============================================================
+   ENGINE CAROUSEL — 3D coverflow driver
+   ============================================================ */
+(function () {
+  'use strict';
+  function init() {
+    var car = document.querySelector('.engine-carousel');
+    if (!car) return;
+    var slides = Array.prototype.slice.call(car.querySelectorAll('.ec-slide'));
+    var dots = Array.prototype.slice.call(car.querySelectorAll('.ec-dot'));
+    var prev = car.querySelector('.ec-nav.prev');
+    var next = car.querySelector('.ec-nav.next');
+    var idx = 0;
+
+    function render() {
+      slides.forEach(function (s, i) {
+        var off = i - idx;
+        s.classList.remove('off-0','off-1','off--1','off-2','off--2','off-hidden');
+        if      (off === 0)  s.classList.add('off-0');
+        else if (off === 1)  s.classList.add('off-1');
+        else if (off === -1) s.classList.add('off--1');
+        else if (off === 2)  s.classList.add('off-2');
+        else if (off === -2) s.classList.add('off--2');
+        else                 s.classList.add('off-hidden');
+      });
+      dots.forEach(function (d, i) {
+        d.classList.toggle('active', i === idx);
+      });
+      car.setAttribute('data-active', idx);
+    }
+
+    function go(n) {
+      idx = (n + slides.length) % slides.length;
+      render();
+    }
+
+    prev && prev.addEventListener('click', function () { go(idx - 1); });
+    next && next.addEventListener('click', function () { go(idx + 1); });
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
+
+    // Click adjacent cards to focus them
+    slides.forEach(function (s, i) {
+      s.addEventListener('click', function () { if (i !== idx) go(i); });
+    });
+
+    // Keyboard nav when carousel is in viewport
+    document.addEventListener('keydown', function (e) {
+      var rect = car.getBoundingClientRect();
+      var inView = rect.bottom > 100 && rect.top < window.innerHeight - 100;
+      if (!inView) return;
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); go(idx - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); }
+    });
+
+    // Open Engine link scrolls to the matching engine in the walkthrough
+    slides.forEach(function (s) {
+      var link = s.querySelector('.ec-open');
+      if (!link) return;
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var target = link.getAttribute('data-target');
+        var node = document.querySelector('[data-engine="' + target + '"][data-state="1"]');
+        if (node) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    render();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();

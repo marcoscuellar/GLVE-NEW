@@ -61,8 +61,9 @@
     </div>
     <h1 class="cover-h">A composable<span class="light">agentic architecture.</span></h1>
     <p class="cover-lede">
-      Laura, Patrick &mdash; this is the system I&rsquo;d put underneath your team.
-      Six specialized engines doing the research week so your reps can do the selling week.
+      Forty AEs. <strong>70% of the week burned on analyst work.</strong>
+      GLVE is the architecture that flips it &mdash; six specialized engines doing the research week,
+      so your reps get the selling week back.
     </p>
   </div>
 
@@ -183,37 +184,78 @@
     Instead of one massive generalized model attempting every task, GLVE separates operational responsibilities into modular intelligence engines. Each has a distinct mandate, reasoning boundaries, and verification ownership. The system orchestrates them through structured, zero-knowledge handoffs.
   </p>
 
-  <div class="engine-grid">
-    <article class="engine-card-mini">
-      <div class="ec-top"><div class="ec-num">01</div><div class="ec-tag">Validation</div></div>
-      <div class="ec-title">Role Validation</div>
-      <div class="ec-desc">Confirms hiring activity is real before outreach begins. Cross-validates ATS, ecosystems, hiring signals.</div>
-    </article>
-    <article class="engine-card-mini amber">
-      <div class="ec-top"><div class="ec-num">02</div><div class="ec-tag">Multi-Vertical</div></div>
-      <div class="ec-title">Buying Signals</div>
-      <div class="ec-desc">Detects accounts showing intent right now. Scores recency, density, and signal correlation.</div>
-    </article>
-    <article class="engine-card-mini">
-      <div class="ec-top"><div class="ec-num">03</div><div class="ec-tag">Intelligence</div></div>
-      <div class="ec-title">Stakeholder Mapping</div>
-      <div class="ec-desc">Identifies the right humans inside qualified accounts — visible decision-makers and quiet authority paths.</div>
-    </article>
-    <article class="engine-card-mini">
-      <div class="ec-top"><div class="ec-num">04</div><div class="ec-tag">Synthesis</div></div>
-      <div class="ec-title">Outreach Architecture</div>
-      <div class="ec-desc">Constructs the right message for the right person at the right moment. Context-anchored, not templated.</div>
-    </article>
-    <article class="engine-card-mini">
-      <div class="ec-top"><div class="ec-num">05</div><div class="ec-tag">Orchestration</div></div>
-      <div class="ec-title">Timing · Orchestration</div>
-      <div class="ec-desc">Sequences outreach within signal windows. Coordinates channels, cadence, response state.</div>
-    </article>
-    <article class="engine-card-mini navy">
-      <div class="ec-top"><div class="ec-num">06</div><div class="ec-tag">Delivery</div></div>
-      <div class="ec-title">Audit &amp; Delivery</div>
-      <div class="ec-desc">Wraps everything in a strategic audit and delivers verified opportunity packages back to Bullhorn / CRM.</div>
-    </article>
+  <div class="engine-carousel" data-active="0">
+    <button class="ec-nav prev" aria-label="Previous engine" type="button">&#8249;</button>
+    <button class="ec-nav next" aria-label="Next engine" type="button">&#8250;</button>
+    <div class="ec-track">
+      <article class="ec-slide" data-tone="default">
+        <div class="ec-top"><div class="ec-num">01</div><div class="ec-tag">Pipeline</div></div>
+        <div class="ec-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3 class="ec-title">Role Validation</h3>
+        <p class="ec-desc">Confirms hiring activity is real before outreach begins. Cross-validates ATS, ecosystems, hiring signals.</p>
+        <a class="ec-open" href="#" data-target="01">Open engine &rarr;</a>
+      </article>
+
+      <article class="ec-slide" data-tone="amber">
+        <div class="ec-top"><div class="ec-num">02</div><div class="ec-tag">Multi-Vertical Intelligence</div></div>
+        <div class="ec-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l3 3 4-6 4 4 7-9"/><path d="M3 20h18"/></svg>
+        </div>
+        <h3 class="ec-title">Buying Signals</h3>
+        <p class="ec-desc">Detects accounts showing intent right now. Scores recency, density, and signal correlation.</p>
+        <a class="ec-open" href="#" data-target="02">Open engine &rarr;</a>
+      </article>
+
+      <article class="ec-slide" data-tone="default">
+        <div class="ec-top"><div class="ec-num">03</div><div class="ec-tag">Intelligence Engine</div></div>
+        <div class="ec-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="6" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M12 8.5L6 16M12 8.5L18 16"/></svg>
+        </div>
+        <h3 class="ec-title">Stakeholder Mapping</h3>
+        <p class="ec-desc">Identifies the right humans inside qualified accounts &mdash; visible decision-makers and quiet authority paths.</p>
+        <a class="ec-open" href="#" data-target="03">Open engine &rarr;</a>
+      </article>
+
+      <article class="ec-slide" data-tone="default">
+        <div class="ec-top"><div class="ec-num">04</div><div class="ec-tag">Synthesis Engine</div></div>
+        <div class="ec-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16M4 12h10M4 19h16"/><circle cx="18" cy="12" r="2"/></svg>
+        </div>
+        <h3 class="ec-title">Outreach Architecture</h3>
+        <p class="ec-desc">Constructs the right message for the right person at the right moment. Context-anchored, not templated.</p>
+        <a class="ec-open" href="#" data-target="04">Open engine &rarr;</a>
+      </article>
+
+      <article class="ec-slide" data-tone="default">
+        <div class="ec-top"><div class="ec-num">05</div><div class="ec-tag">Orchestration Engine</div></div>
+        <div class="ec-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h3 class="ec-title">Timing &middot; Orchestration</h3>
+        <p class="ec-desc">Sequences outreach within signal windows. Coordinates channels, cadence, response state.</p>
+        <a class="ec-open" href="#" data-target="05">Open engine &rarr;</a>
+      </article>
+
+      <article class="ec-slide" data-tone="navy">
+        <div class="ec-top"><div class="ec-num">06</div><div class="ec-tag">Delivery Engine</div></div>
+        <div class="ec-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7l8-4 8 4v10l-8 4-8-4V7z"/><path d="M4 7l8 4 8-4M12 11v10"/></svg>
+        </div>
+        <h3 class="ec-title">Audit &amp; Delivery</h3>
+        <p class="ec-desc">Wraps everything in a strategic audit and delivers verified opportunity packages back to Bullhorn / CRM.</p>
+        <a class="ec-open" href="#" data-target="06">Open engine &rarr;</a>
+      </article>
+    </div>
+    <div class="ec-dots" role="tablist">
+      <button class="ec-dot" data-i="0" aria-label="Engine 1"></button>
+      <button class="ec-dot" data-i="1" aria-label="Engine 2"></button>
+      <button class="ec-dot" data-i="2" aria-label="Engine 3"></button>
+      <button class="ec-dot" data-i="3" aria-label="Engine 4"></button>
+      <button class="ec-dot" data-i="4" aria-label="Engine 5"></button>
+      <button class="ec-dot" data-i="5" aria-label="Engine 6"></button>
+    </div>
   </div>
 </section>
 
