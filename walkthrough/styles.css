@@ -2036,6 +2036,13 @@ body {
   color: var(--ink-3);
   display: block;
 }
+.cover-lede {
+  margin-top: 24px;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 60ch;
+}
 .cover-foot {
   display: flex;
   justify-content: space-between;
