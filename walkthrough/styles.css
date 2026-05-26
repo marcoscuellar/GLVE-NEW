@@ -1401,6 +1401,15 @@ body {
   font-family: var(--mono); font-size: 10px; color: var(--ink-3);
   text-transform: uppercase; letter-spacing: 0.08em;
 }
+.diag-cite {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
 
 /* ============================================================
    TWO OPERATOR REALITIES — visual fork
