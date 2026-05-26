@@ -1,23 +1,27 @@
+import { Stage } from "./Stage";
 import { ExecutiveSummary } from "./ExecutiveSummary";
-import { NavyEngineRoom } from "./NavyEngineRoom";
+import { OperationalDepth } from "./OperationalDepth";
 import { DualOutput } from "./DualOutput";
-import type { EngineCardData, EngineState } from "./types";
+import type { Engine, EngineState } from "./types";
 
 export interface EngineCardProps {
+  engine: Engine;
   state: EngineState;
-  data: EngineCardData;
   className?: string;
 }
 
-export function EngineCard({ state, data, className }: EngineCardProps) {
-  switch (state) {
-    case "executive-summary":
-      return <ExecutiveSummary data={data} className={className} />;
-    case "navy-engine-room":
-      return <NavyEngineRoom data={data} className={className} />;
-    case "dual-output":
-      return <DualOutput data={data} className={className} />;
-  }
+export function EngineCard({ engine, state, className }: EngineCardProps) {
+  return (
+    <Stage
+      engineId={engine.id}
+      engineName={engine.name}
+      tone={engine.tone}
+      state={state}
+      className={className}
+    >
+      {state === 1 && <ExecutiveSummary engine={engine} />}
+      {state === 2 && <OperationalDepth engine={engine} />}
+      {state === 3 && <DualOutput engine={engine} />}
+    </Stage>
+  );
 }
-
-export type { EngineCardData, EngineState };

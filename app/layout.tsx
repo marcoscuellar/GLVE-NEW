@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "GLVE — Operational Walkthrough",
   description:
-    "A composable agentic architecture for operational intelligence.",
+    "A Composable Agentic Architecture for staffing operations.",
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
           crossOrigin=""
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500;600&display=swap"
           rel="stylesheet"
         />
       </head>

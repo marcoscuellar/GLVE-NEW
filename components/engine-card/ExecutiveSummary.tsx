@@ -1,30 +1,40 @@
-import { cn } from "@/lib/cn";
-import type { EngineCardData } from "./types";
+import type { Engine } from "./types";
 
 interface Props {
-  data: EngineCardData;
-  className?: string;
+  engine: Engine;
 }
 
-// Placeholder for State 01. Final design lands after the prototype source export.
-export function ExecutiveSummary({ data, className }: Props) {
+export function ExecutiveSummary({ engine }: Props) {
   return (
-    <section
-      aria-label={`${data.name} — Executive Summary`}
-      className={cn(
-        "rounded-[28px] border border-line bg-white p-8 shadow-card",
-        className,
-      )}
-    >
-      <div className="mb-3 font-mono text-[11px] tracking-[0.3em] text-muted uppercase">
-        State 01 · Executive Summary
+    <div className="exec">
+      <div className="exec-tag">— Executive Summary</div>
+      <div className="exec-title">
+        Engine {engine.id} · {engine.name}
       </div>
-      <h2 className="text-balance text-3xl font-bold tracking-tightest">
-        {data.name}
-      </h2>
-      <p className="mt-3 max-w-xl text-balance text-[15px] leading-relaxed text-muted">
-        {data.summary}
-      </p>
-    </section>
+      <div className="exec-grid">
+        <div className="exec-row">
+          <div className="k">What</div>
+          <div className="v">{engine.exec.what}</div>
+        </div>
+        <div className="exec-row">
+          <div className="k">How</div>
+          <div className="v">{engine.exec.how}</div>
+        </div>
+        <div className="exec-row">
+          <div className="k">Input</div>
+          <div className="v">{engine.exec.input}</div>
+        </div>
+      </div>
+      <div className="exec-foot">
+        <div className="handoff">
+          <span className="arrow">↓</span>
+          <span>
+            {engine.handoff.nextId
+              ? `Hands off ${engine.handoff.variables} verified variables to Engine ${engine.handoff.nextId} · ${engine.handoff.nextName}`
+              : engine.handoff.nextName}
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -1,12 +1,6 @@
 export { EngineCard } from "./EngineCard";
-export { NavyEngineRoom } from "./NavyEngineRoom";
+export { Stage } from "./Stage";
 export { ExecutiveSummary } from "./ExecutiveSummary";
+export { OperationalDepth } from "./OperationalDepth";
 export { DualOutput } from "./DualOutput";
-export type {
-  EngineCardData,
-  EngineState,
-  EngineMetric,
-  PipelineStage,
-  LogLine,
-  SignalLevel,
-} from "./types";
+export type { Engine, EngineState, EngineTone } from "./types";
